@@ -38,12 +38,12 @@ public class UserProfileDetailsActivity extends AppCompatActivity implements Vie
     FirebaseDatabase database;
     FirebaseAuth auth;
     FirebaseUser firebaseUser;
-    DatabaseReference userReference, clinicReference;
+    DatabaseReference userReference;
     User user;
     ProgressBar progressBar;
     LinearLayout clinicDetailsLayout;
     boolean isPhysician = false;
-    SharedPrefHelper sharedPrefHelper;
+//    SharedPrefHelper sharedPrefHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class UserProfileDetailsActivity extends AppCompatActivity implements Vie
         setTitle("User Profile Details");
         findViewById();
 
-        sharedPrefHelper = new SharedPrefHelper(getApplicationContext());
+//        sharedPrefHelper = new SharedPrefHelper(getApplicationContext());
 
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
@@ -64,17 +64,6 @@ public class UserProfileDetailsActivity extends AppCompatActivity implements Vie
 
         database = FirebaseDatabase.getInstance();
         userReference = database.getReference("users");
-
-       /* userReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Toast.makeText(getApplicationContext(), "User Registered Successfully.", Toast.LENGTH_LONG).show();
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), "User RegistrationActivity Failed.", Toast.LENGTH_LONG).show();
-            }
-        });*/
 
         createNotificationChannel();
     }
@@ -130,7 +119,7 @@ public class UserProfileDetailsActivity extends AppCompatActivity implements Vie
                     }else{
                         validateAndStoreUserData(user);
                     }
-                    sharedPrefHelper.setUserRegistrationDone(true);
+//                    sharedPrefHelper.setUserRegistrationDone(true);
                     Intent intent = new Intent(UserProfileDetailsActivity.this, HomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -162,7 +151,7 @@ public class UserProfileDetailsActivity extends AppCompatActivity implements Vie
 
         DatabaseReference clinicRef = database.getReference("clinics");
         clinicRef.child(firebaseUser.getUid()).setValue(clinic);
-        sharedPrefHelper.saveClinicToPref(clinic);
+//        sharedPrefHelper.saveClinicToPref(clinic);
         Toast.makeText(getApplicationContext(), "Clinic Data Registered.", Toast.LENGTH_SHORT).show();
         edtCName.setText("");
         edtCName.requestFocus();
@@ -182,7 +171,7 @@ public class UserProfileDetailsActivity extends AppCompatActivity implements Vie
     private void validateAndStoreUserData(User user) {
 
         userReference.child(firebaseUser.getUid()).setValue(user);
-        sharedPrefHelper.saveUserToPref(user);
+//        sharedPrefHelper.saveUserToPref(user);
         Toast.makeText(getApplicationContext(), "User Data Registered.", Toast.LENGTH_SHORT).show();
         edtFullName.setText("");
         edtFullName.requestFocus();

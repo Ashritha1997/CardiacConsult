@@ -155,6 +155,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                                             User user = userSnapshot.getValue(User.class);
                                             if (user.getEmail().equalsIgnoreCase(firebaseUser.getEmail())) {
                                                 profileRegistered = true;
+                                                sharedPrefHelper.saveUserToPref(user);
                                             }
                                         }
 

@@ -13,26 +13,16 @@ import com.project.cardiacconsult.R;
 public class MainMenuAdapter extends BaseAdapter {
 
     private Context mContext;
-    private final String[] textview;
-    private final int[] Imageid;
-
-
-
-/*    // Keep all Images in array
-    public Integer[] mThumbIds = {
-            R.drawable.logo, R.drawable.logo,
-            R.drawable.logo
-    };*/
+    private final String[] menuLabels = {"ECG", "DETAILS", "HISTORY","ECG", "DETAILS", "HISTORY","ECG", "DETAILS", "HISTORY"};
+    private final int[] menuIds = {R.drawable.ic_hospital, R.drawable.ic_body_points, R.drawable.ic_ecg_history,R.drawable.ic_hospital, R.drawable.ic_body_points, R.drawable.ic_ecg_history,R.drawable.ic_hospital, R.drawable.ic_body_points, R.drawable.ic_ecg_history};
 
     //Constructor
-    public MainMenuAdapter(Context c,String[] textview, int[] Imageid){
+    public MainMenuAdapter(Context c){
         mContext = c;
-        this.Imageid=Imageid;
-        this.textview=textview;
     }
     @Override
     public int getCount() {
-        return textview.length;
+        return menuLabels.length;
     }
 
     @Override
@@ -47,29 +37,22 @@ public class MainMenuAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //ImageView imageView = new ImageView(mContext);
-        //imageView.setImageResource(mThumbIds[position]);
-        //imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        //imageView.setLayoutParams(new GridView.LayoutParams(70, 70));
-        //return imageView;
 
-        View grid;
+        View itemView;
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
 
-            grid = new View(mContext);
-            grid = inflater.inflate(R.layout.row_data, null);
-            TextView textView = (TextView) grid.findViewById(R.id.tv1);
-            ImageView imageView = (ImageView)grid.findViewById(R.id.images);
-            textView.setText(textview[position]);
-            imageView.setImageResource(Imageid[position]);
+            itemView = inflater.inflate(R.layout.grid_menu_item_view, null);
+            TextView itemLabel = itemView.findViewById(R.id.itemLabel);
+            ImageView itemImage = itemView.findViewById(R.id.itemImage);
+            itemLabel.setText(menuLabels[position]);
+            itemImage.setImageResource(menuIds[position]);
         } else {
-            grid = (View) convertView;
+            itemView = convertView;
         }
-
-        return grid;
+        return itemView;
     }
 
 }
