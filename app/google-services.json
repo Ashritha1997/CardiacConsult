@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "164411744863",
+    "firebase_url": "https://cardiac-consult.firebaseio.com",
+    "project_id": "cardiac-consult",
+    "storage_bucket": "cardiac-consult.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164411744863:android:420bce52fb9eb0bd",
+        "android_client_info": {
+          "package_name": "com.project.cardiacconsult"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "164411744863-9s4otb55aknkit6fu4gs9m8raf1gfru9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnMqdpTOnUkfdxtYJlEugPdAQY6wcCc04"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

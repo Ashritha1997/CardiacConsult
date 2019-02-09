@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.UserProfileDetailsActivity">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/white"
+            android:indeterminate="true"
+            android:indeterminateTint="#00574b"
+            android:max="100"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/label_form_title"
+            android:textStyle="bold"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/edt_fullname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/edt_background"
+            android:ems="10"
+            android:hint="@string/hint_fullname"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <!--<EditText
+            android:id="@+id/edt_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="@string/hint_password"
+            android:inputType="textWebPassword"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/edt_fullname"
+            app:layout_constraintStart_toStartOf="@+id/edt_fullname"
+            app:layout_constraintTop_toBottomOf="@+id/edt_fullname" />-->
+
+        <EditText
+            android:id="@+id/edt_email"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edt_background"
+            android:ems="10"
+            android:hint="@string/hint_email"
+            android:inputType="textEmailAddress"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/edt_fullname"
+            app:layout_constraintStart_toStartOf="@+id/edt_fullname"
+            app:layout_constraintTop_toBottomOf="@+id/edt_fullname" />
+
+        <EditText
+            android:id="@+id/edt_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edt_background"
+            android:ems="10"
+            android:hint="@string/hint_address"
+            android:inputType="textPostalAddress"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/edt_email"
+            app:layout_constraintStart_toStartOf="@+id/edt_email"
+            app:layout_constraintTop_toBottomOf="@+id/edt_email" />
+
+        <EditText
+            android:id="@+id/edt_phone_no"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/edt_background"
+            android:ems="10"
+            android:hint="@string/hint_phoneno"
+            android:inputType="phone"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/edt_address"
+            app:layout_constraintStart_toStartOf="@+id/edt_address"
+            app:layout_constraintTop_toBottomOf="@+id/edt_address" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:paddingStart="15dp"
+            android:paddingLeft="15dp"
+            android:paddingEnd="15dp"
+            android:paddingRight="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/edt_phone_no"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/edt_phone_no"
+            app:layout_constraintTop_toBottomOf="@+id/clinicDetailsLayout"
+            tools:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbPatient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="false"
+                android:text="@string/patient" />
+
+            <RadioButton
+                android:id="@+id/rbPhysician"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/physician" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="92dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/btn_dark_background"
+            android:text="@string/btnlabel_Submit"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/radioGroup"
+            app:layout_constraintHorizontal_bias="0.515"
+            app:layout_constraintStart_toStartOf="@+id/radioGroup"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+        <!--<Button
+            android:id="@+id/btnGetClinicDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/btnLabel_clinic_details"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/btnSubmit"
+            app:layout_constraintStart_toStartOf="@+id/btnSubmit"
+            app:layout_constraintTop_toBottomOf="@+id/btnSubmit" />-->
+
+        <LinearLayout
+            android:id="@+id/clinicDetailsLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edt_phone_no">
+
+            <TextView
+                android:id="@+id/tvClinincInfoLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/tvLabel_clinic_info"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtClinicname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edt_background"
+                android:ems="10"
+                android:hint="@string/hint_clinic_name"
+                android:inputType="textPersonName"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/edtClinic_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edt_background"
+                android:ems="10"
+                android:hint="@string/hint_clinic_address"
+                android:inputType="textPostalAddress"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/edt_clinic_phone_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edt_background"
+                android:ems="10"
+                android:hint="@string/hint_clinic_phone_no"
+                android:inputType="phone"
+                android:padding="10dp" />
+
+            <EditText
+                android:id="@+id/edt_clininc_lic_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edt_background"
+                android:ems="10"
+                android:hint="@string/hint_enter_clinic_lic_no"
+                android:inputType="textPersonName"
+                android:padding="10dp" />
+
+        </LinearLayout>
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

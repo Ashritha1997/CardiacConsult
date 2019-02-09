@@ -1,0 +1,42 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.HomeActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    //include Grid layout for menu items here
+
+    <!--<ProgressBar android:layout_height="12dp"
+        android:layout_width="fill_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"
+        android:max="100"
+        android:indeterminateTint="#00574b"
+        android:indeterminate="true"
+        android:backgroundTint="@android:color/white" style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/progressbar"/>-->
+    <GridView
+        android:id="@+id/grid_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="2"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

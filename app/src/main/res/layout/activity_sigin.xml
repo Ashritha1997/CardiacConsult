@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".activities.SigninActivity">
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="12dp"
+        android:backgroundTint="@android:color/white"
+        android:indeterminate="true"
+        android:indeterminateTint="#00574b"
+        android:max="100"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        android:ems="10"
+        android:hint="@string/hint_email"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:background="@drawable/edt_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/hint_password"
+        android:inputType="textPassword"
+        android:background="@drawable/edt_background"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/edtEmail"
+        app:layout_constraintStart_toStartOf="@+id/edtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+
+    <Button
+        android:id="@+id/btnSignIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/btn_dark_background"
+        android:text="@string/btnLabel_SigIn"
+        android:textColor="@android:color/white"
+        android:padding="5dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/edtPassword"
+        app:layout_constraintStart_toStartOf="@+id/edtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+
+    <TextView
+        android:id="@+id/tvLabel_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/tvLabel_register"
+        android:textAllCaps="false"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:paddingEnd="4dp"
+        android:paddingRight="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnSignIn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/btnSignIn"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
+
+    <!--<com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--<TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/label_signin_details"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/sign_in_button"
+        app:layout_constraintStart_toStartOf="@+id/sign_in_button"
+        app:layout_constraintTop_toBottomOf="@+id/sign_in_button" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/tvId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvEmail"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvEmail"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
+
+    <TextView
+        android:id="@+id/tvIdToken"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvId"
+        app:layout_constraintStart_toStartOf="@+id/tvId"
+        app:layout_constraintTop_toBottomOf="@+id/tvId" />-->
+
+
+</android.support.constraint.ConstraintLayout>
