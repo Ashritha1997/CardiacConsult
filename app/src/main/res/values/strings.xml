@@ -1,40 +1,40 @@
 <resources>
-    <string name="app_name">Cardiac Consult</string>
-    <string name="hint_username">enter username</string>
-    <string name="hint_password">enter password</string>
-    <string name="hint_email">enter email</string>
-    <string name="hint_address">enter address</string>
-    <string name="hint_phoneno">enter phone no</string>
-    <string name="patient">Patient</string>
-    <string name="physician">Physician</string>
-    <string name="btnlabel_Submit">REGISTER</string>
-    <string name="label_form_title">User Profile Details</string>
-    <string name="sign_in">Sign In</string>
-    <string name="notification">Notification</string>
-    <string name="label_signin_details">DETAILS</string>
-    <string name="sign_out">SIGN OUT</string>
-    <string name="channel_name">main</string>
-    <string name="channel_description">Main Notification Channel</string>
-    <string name="btnLabel_clinic_details">Fill Clinic Details</string>
-    <string name="btnLabel_SigIn">SIGN IN</string>
-    <string name="tvLabel_register">REGISTER HERE</string>
-    <string name="btnLabel_Register">REGISTER</string>
-    <string name="tvLabel_have_account">have account ?</string>
-    <string name="hint_clinic_name">enter clinic name</string>
-    <string name="hint_clinic_address">enter clinic address</string>
-    <string name="hint_clinic_phone_no">enter clinic phone no</string>
-    <string name="hint_enter_clinic_lic_no">enter clinic lic no</string>
-    <string name="tvLabel_clinic_info">CLINIC INFO</string>
-    <string name="hint_fullname">enter full name</string>
-    <string name="title_activity_app_bar_main">app_bar_main</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <string name="openDrawer">open_drawer</string>
-    <string name="closeDrawer">close_drawer</string>
+    <string name="app_name" translatable="false">Cardiac Consult</string>
+    <string name="hint_username" translatable="false">enter username</string>
+    <string name="hint_password" translatable="false">enter password</string>
+    <string name="hint_email" translatable="false">enter email</string>
+    <string name="hint_address" translatable="false">enter address</string>
+    <string name="hint_phoneno" translatable="false">enter phone no</string>
+    <string name="patient" translatable="false">Patient</string>
+    <string name="physician" translatable="false">Physician</string>
+    <string name="btnlabel_Submit" translatable="false">REGISTER</string>
+    <string name="label_form_title" translatable="false">User Profile Details</string>
+    <string name="sign_in" translatable="false">Sign In</string>
+    <string name="notification" translatable="false">Notification</string>
+    <string name="label_signin_details" translatable="false">DETAILS</string>
+    <string name="sign_out" translatable="false">SIGN OUT</string>
+    <string name="channel_name" translatable="false">main</string>
+    <string name="channel_description" translatable="false">Main Notification Channel</string>
+    <string name="btnLabel_clinic_details" translatable="false">Fill Clinic Details</string>
+    <string name="btnLabel_SigIn" translatable="false">SIGN IN</string>
+    <string name="tvLabel_register" translatable="false">REGISTER HERE</string>
+    <string name="btnLabel_Register" translatable="false">REGISTER</string>
+    <string name="tvLabel_have_account" translatable="false">have account ?</string>
+    <string name="hint_clinic_name" translatable="false">enter clinic name</string>
+    <string name="hint_clinic_address" translatable="false">enter clinic address</string>
+    <string name="hint_clinic_phone_no" translatable="false">enter clinic phone no</string>
+    <string name="hint_enter_clinic_lic_no" translatable="false">enter clinic lic no</string>
+    <string name="tvLabel_clinic_info" translatable="false">CLINIC INFO</string>
+    <string name="hint_fullname" translatable="false">enter full name</string>
+    <string name="title_activity_app_bar_main" translatable="false">app_bar_main</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+    <string name="nav_header_title" translatable="false">Android Studio</string>
+    <string name="nav_header_subtitle" translatable="false">android.studio@android.com</string>
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="openDrawer" translatable="false">open_drawer</string>
+    <string name="closeDrawer" translatable="false">close_drawer</string>
+    <string name="img_content_description" translatable="false">Application Image View</string>
     <string name="nav_bar_title_clinic_data">CLINIC INFO</string>
-    <string name="img_content_description">Application Image View</string>
 </resources>
