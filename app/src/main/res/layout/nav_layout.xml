@@ -35,7 +35,6 @@
             android:drawableLeft="@drawable/ic_email"
             android:drawablePadding="15dp"
             android:gravity="center_vertical"
-            android:onClick="show_email"
             android:textSize="@dimen/tv_label_font_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
