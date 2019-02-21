@@ -67,7 +67,6 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
         firebaseDatabase = FirebaseDatabase.getInstance();
         userReference = firebaseDatabase.getReference("users");
 
-
         /*signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
         signInButton.setOnClickListener(this);
@@ -156,6 +155,7 @@ public class SigninActivity extends AppCompatActivity implements View.OnClickLis
                                             if (user.getEmail().equalsIgnoreCase(firebaseUser.getEmail())) {
                                                 profileRegistered = true;
                                                 sharedPrefHelper.saveUserToPref(user);
+                                                sharedPrefHelper.setUserRegistrationDone(true);
                                             }
                                         }
 
