@@ -127,6 +127,7 @@ public class HomeActivity extends AppCompatActivity {
                 Log.d("DataSnapshot", "onDataChange: " + dataSnapshot.toString());
 
                 clinicInfo = dataSnapshot.getValue(Clinic.class);
+                sharedPrefHelper.saveClinicToPref(clinicInfo);
                 tvClinicName.setText(clinicInfo.getName());
                 tvClinicAddress.setText(clinicInfo.getAddress());
                 tvClinicContact.setText(clinicInfo.getContactNo());
@@ -169,7 +170,12 @@ public class HomeActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.sign_out:
                 auth.signOut();
+                sharedPrefHelper.setUserRegistrationDone(false);
+                sharedPrefHelper.saveUserToPref(null);
+                sharedPrefHelper.saveClinicToPref(null);
+                sharedPrefHelper.saveUidToPref("");
                 progressBar.setVisibility(View.VISIBLE);
+
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
