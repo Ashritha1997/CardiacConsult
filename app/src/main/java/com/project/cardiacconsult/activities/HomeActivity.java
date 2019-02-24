@@ -93,6 +93,7 @@ public class HomeActivity extends AppCompatActivity {
         mainMenuAdapter = new MainMenuAdapter(HomeActivity.this);
 
         gridView.setAdapter(mainMenuAdapter);
+
     }
 
     private void displayUserInfoInNavBar() {

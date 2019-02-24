@@ -42,6 +42,17 @@
             tools:replace="android:launchMode" />
         <activity android:name=".activities.RegistrationActivity" />
         <activity android:name=".activities.HomeActivity" />
+        <activity
+            android:name=".activities.ECGActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".activities.DiagnosisActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activities.HistoryActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activities.PhysicianSearchActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".activities.FeedbackActivity"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
