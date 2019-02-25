@@ -4,12 +4,11 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="12dp"
-    app:cardElevation="5dp"
     app:cardUseCompatPadding="true">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="100dp"
         android:orientation="horizontal"
         >
 
@@ -26,6 +25,8 @@
                 android:id="@+id/username"
                 android:layout_weight="1"
                 android:padding="2dp"
+                android:textSize="14sp"
+                android:layout_marginStart="4dp"
                 />
 
             <TextView
@@ -34,6 +35,8 @@
                 android:layout_weight="1"
                 android:id="@+id/clinicname"
                 android:padding="2dp"
+                android:textSize="14sp"
+                android:layout_marginStart="4dp"
                 />
 
             <TextView
@@ -42,6 +45,8 @@
                 android:layout_weight="1"
                 android:id="@+id/clinicaddress"
                 android:padding="2dp"
+                android:textSize="14sp"
+                android:layout_marginStart="4dp"
                 />
 
         </LinearLayout>
@@ -49,10 +54,11 @@
         <ImageView
             android:id="@+id/callimage"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.3"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.2"
             android:scaleType="fitXY"
-            android:src="@drawable/person_icon"/>
+            android:src="@drawable/ic_call"/>
     </LinearLayout>
 
 

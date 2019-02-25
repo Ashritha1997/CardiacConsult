@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.project.cardiacconsult.R;
+import com.project.cardiacconsult.models.Clinic;
 import com.project.cardiacconsult.models.User;
 
 public class PhysicianSearchActivity extends AppCompatActivity {
@@ -26,11 +27,15 @@ public class PhysicianSearchActivity extends AppCompatActivity {
     private static final String TAG = PhysicianSearchActivity.class.getName();
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    User user;
     FirebaseRecyclerAdapter adapter;
     RecyclerView recyclerView;
     Toolbar toolbar;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.startListening();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,26 +45,21 @@ public class PhysicianSearchActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Physician Search");
 
-        Log.e(TAG, "onCreate: 1111");
-
         firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
+        databaseReference = firebaseDatabase.getReference().child("clinics");
         recyclerView=findViewById(R.id.recyclerview);
 
         Query query= databaseReference.limitToFirst(20);
 
-        FirebaseRecyclerOptions<User> options= new FirebaseRecyclerOptions.Builder<User>()
-                .setQuery(query,User.class).build();
+        FirebaseRecyclerOptions<Clinic> options= new FirebaseRecyclerOptions.Builder<Clinic>()
+                .setQuery(query,Clinic.class).build();
 
-        Log.e(TAG, "onCreate: 2222");
-
-        adapter= new FirebaseRecyclerAdapter<User, PhysicianViewHolder>(options) {
+        adapter= new FirebaseRecyclerAdapter<Clinic, PhysicianViewHolder>(options) {
 
             @NonNull
             @Override
             public PhysicianViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
             {
-                Log.e(TAG, "onCreateViewHolder");
 
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.physician_search_list_item, parent, false);
@@ -68,16 +68,15 @@ public class PhysicianSearchActivity extends AppCompatActivity {
             }
 
             @Override
-            protected void onBindViewHolder(PhysicianViewHolder holder, int position, User model)
+            protected void onBindViewHolder(PhysicianViewHolder holder, int position, Clinic clinic)
             {
-                Log.e(TAG, "onBindViewHolder");
-                holder.username.setText(model.getuserName());
-                holder.clinicname.setText(model.getRole().toString());
-                holder.clinicaddress.setText(model.getAddress());
+
+                //holder.username.setText(clinic.getName());
+                holder.clinicname.setText(clinic.getName());
+                holder.clinicaddress.setText(clinic.getAddress());
             }
         };
 
-        Log.e(TAG, "Attaching Adapter to RecyclerView");
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
@@ -93,17 +92,18 @@ public class PhysicianSearchActivity extends AppCompatActivity {
         public PhysicianViewHolder(View itemView) {
             super(itemView);
 
-            username = (TextView) itemView.findViewById(R.id.username);
-            clinicname = (TextView) itemView.findViewById(R.id.clinicname);
-            clinicaddress = (TextView) itemView.findViewById(R.id.clinicaddress);
-            callimage = (ImageView) itemView.findViewById(R.id.callimage);
+            username = itemView.findViewById(R.id.username);
+            clinicname = itemView.findViewById(R.id.clinicname);
+            clinicaddress = itemView.findViewById(R.id.clinicaddress);
+            callimage = itemView.findViewById(R.id.callimage);
 
 
         }
     }
 
-
-
-
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        adapter.stopListening();
+    }
 }
