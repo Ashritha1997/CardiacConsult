@@ -37,4 +37,9 @@
     <string name="closeDrawer" translatable="false">close_drawer</string>
     <string name="img_content_description" translatable="false">Application Image View</string>
     <string name="nav_bar_title_clinic_data">CLINIC INFO</string>
+    <string name="overall_satisfaction">Overall Satisfaction?</string>
+    <string name="diagnosis">Diagnosis</string>
+    <string name="accuracy">Accuracy</string>
+    <string name="was_physician_search_helpful">Was Physician search helpful?</string>
+    <string name="submit">Submit</string>
 </resources>

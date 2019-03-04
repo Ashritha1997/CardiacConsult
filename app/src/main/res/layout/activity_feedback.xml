@@ -9,17 +9,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".activities.FeedbackActivity">
 
            <TextView
-            android:id="@+id/textView"
+            android:id="@+id/textViewOverall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="26dp"
+            android:textSize="26sp"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:text="Overall Satisfaction?"
+            android:text="@string/overall_satisfaction"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -37,17 +37,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewOverall" />
 
         <TextView
-            android:id="@+id/tvRateCount"
+            android:id="@+id/tvDiagnosis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="26dp"
+            android:textSize="26sp"
             android:textStyle="bold"
             android:textAlignment="center"
             android:layout_marginTop="36dp"
-            android:text="Diagnosis"
+            android:text="@string/diagnosis"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.481"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,17 +63,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRateCount" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDiagnosis" />
 
         <TextView
-            android:id="@+id/tvRateMessage"
+            android:id="@+id/tvAccuracy"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="26dp"
+            android:textSize="26sp"
             android:textStyle="bold"
             android:textAlignment="center"
             android:layout_marginTop="44dp"
-            android:text="Accuracy"
+            android:text="@string/accuracy"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.453"
             app:layout_constraintStart_toStartOf="parent"
@@ -89,13 +89,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRateMessage" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAccuracy" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="26dp"
+            android:textSize="26sp"
             android:textStyle="bold"
             android:textAlignment="center"
             android:layout_marginStart="8dp"
@@ -103,7 +103,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="Was Physician search helpful?"
+            android:text="@string/was_physician_search_helpful"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +127,7 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/btn_dark_background"
         android:padding="8dp"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -135,8 +135,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ratingBar4" />
-
-
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
