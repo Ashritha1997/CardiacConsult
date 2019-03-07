@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+//import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.project.cardiacconsult.R;
 import com.project.cardiacconsult.models.Clinic;
-import com.project.cardiacconsult.models.User;
+//import com.project.cardiacconsult.models.User;
 
 public class PhysicianSearchActivity extends AppCompatActivity {
 
