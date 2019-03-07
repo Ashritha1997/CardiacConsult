@@ -3,13 +3,13 @@ package com.project.cardiacconsult.models;
 public class Feedback {
 
 
-    public float Overallrating;
+    private float Overallrating;
 
-    public float accuracy;
+    private float accuracy;
 
-    public float diagnosis;
+    private float diagnosis;
 
-    public float phyrating;
+    private float phyrating;
 
     public Feedback(){
 
@@ -39,8 +39,6 @@ public class Feedback {
     public void setPhyrating(float phyrating) {
         this.phyrating = phyrating;
     }
-
-
 
     public float getOverallrating() {
         return Overallrating;

@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -44,22 +45,24 @@ public class PhysicianSearchActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Physician Search");
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("clinics");
-        recyclerView=findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.recyclerview);
 
-        Query query= databaseReference.limitToFirst(20);
+        Query query = databaseReference.limitToFirst(20);
 
-        FirebaseRecyclerOptions<Clinic> options= new FirebaseRecyclerOptions.Builder<Clinic>()
-                .setQuery(query,Clinic.class).build();
+        FirebaseRecyclerOptions<Clinic> options = new FirebaseRecyclerOptions.Builder<Clinic>()
+                .setQuery(query, Clinic.class).build();
 
-        adapter= new FirebaseRecyclerAdapter<Clinic, PhysicianViewHolder>(options) {
+        adapter = new FirebaseRecyclerAdapter<Clinic, PhysicianViewHolder>(options) {
 
             @NonNull
             @Override
-            public PhysicianViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
-            {
+            public PhysicianViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.physician_search_list_item, parent, false);
@@ -68,8 +71,7 @@ public class PhysicianSearchActivity extends AppCompatActivity {
             }
 
             @Override
-            protected void onBindViewHolder(PhysicianViewHolder holder, int position, Clinic clinic)
-            {
+            protected void onBindViewHolder(PhysicianViewHolder holder, int position, Clinic clinic) {
 
                 //holder.username.setText(clinic.getName());
                 holder.clinicname.setText(clinic.getName());
@@ -83,7 +85,7 @@ public class PhysicianSearchActivity extends AppCompatActivity {
 
     }
 
-    public class PhysicianViewHolder extends RecyclerView.ViewHolder{
+    public class PhysicianViewHolder extends RecyclerView.ViewHolder {
         public TextView username;
         public TextView clinicname;
         public TextView clinicaddress;
@@ -105,5 +107,24 @@ public class PhysicianSearchActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // todo: goto back activity from here
+
+                onBackPressed();
+
+            default:
+
+                return true;
+        }
     }
 }
