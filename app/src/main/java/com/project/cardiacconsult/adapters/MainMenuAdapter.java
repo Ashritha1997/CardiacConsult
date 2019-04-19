@@ -20,8 +20,8 @@ import com.project.cardiacconsult.activities.PhysicianSearchActivity;
 public class MainMenuAdapter extends BaseAdapter {
 
     private Context mContext;
-    private final String[] menuLabels = {"ECG", "DIAGNOSIS", "HISTORY","PHYSICIAN SEARCH", "FEEDBACK"};
-    private final int[] menuIds = {R.drawable.ic_cardiogram, R.drawable.ic_body_points, R.drawable.ic_clinic_history,R.drawable.ic_doctor_search, R.drawable.ic_feedback_icon};
+    private final String[] menuLabels = {"ECG", /*"DIAGNOSIS", "HISTORY",*/"PHYSICIAN SEARCH", "FEEDBACK"};
+    private final int[] menuIds = {R.drawable.ic_cardiogram,/* R.drawable.ic_body_points, R.drawable.ic_clinic_history,*/R.drawable.ic_doctor_search, R.drawable.ic_feedback_icon};
 
     //Constructor
     public MainMenuAdapter(Context c){
@@ -50,7 +50,6 @@ public class MainMenuAdapter extends BaseAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
-
             itemView = inflater.inflate(R.layout.grid_menu_item_view, null);
             TextView itemLabel = itemView.findViewById(R.id.itemLabel);
             ImageView itemImage = itemView.findViewById(R.id.itemImage);

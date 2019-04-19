@@ -1,9 +1,15 @@
 package com.project.cardiacconsult.activities;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,9 +44,9 @@ public class ECGActivity extends AppCompatActivity {
 
     String name = null, address = null;
 
-    BluetoothAdapter mybluetooth = null;
-    BluetoothSocket bSocket = null;
-    Set<BluetoothDevice> pairedDevices;
+    // BluetoothAdapter mybluetooth = null;
+    //BluetoothSocket bSocket = null;
+    //Set<BluetoothDevice> pairedDevices;
     GraphView graph;
     LineGraphSeries<DataPoint> series;
     static final UUID myUUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
@@ -51,7 +57,7 @@ public class ECGActivity extends AppCompatActivity {
     TextView ecgValue;
 
     //Abnormality parameters
-    public static int noItrn = 3, stdMean = 516, upperBound =stdMean + 250, lowerBound = stdMean - 250, preEpoch = 0;
+    public static int noItrn = 3, stdMean = 516, upperBound = stdMean + 250, lowerBound = stdMean - 250, preEpoch = 0;
     public int tempItern = noItrn;
     public static int xValue;
 
@@ -88,7 +94,7 @@ public class ECGActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        series = new LineGraphSeries<DataPoint>(new DataPoint[] {
+        series = new LineGraphSeries<DataPoint>(new DataPoint[]{
                 new DataPoint(0, 0)
         });
         series.setAnimated(true);
@@ -97,27 +103,39 @@ public class ECGActivity extends AppCompatActivity {
         ecgReadingRef = firebaseDatabase.getReference("ecgReading").child(firebaseUser.getUid()).child("ecg");
         ecgReadingRef.addValueEventListener(new ValueEventListener() {
             int xValue = 0;
+            int epochCounter = 0;
+            int epochSum = 0;
+
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Log.d(TAG, "onDataChange: " + dataSnapshot.getValue().toString());
-                int epochSum=0;
-                int i=0;
+
+                int i = 0;
                 ecgValue.setText("ECG: " + dataSnapshot.getValue().toString());
-                String ecgValue = dataSnapshot.getValue().toString();
+                String ecgValueString = dataSnapshot.getValue().toString();
+                StringBuilder displayString = new StringBuilder();
+                displayString.append("ECG: " + ecgValueString);
 
                 series.appendData(
-                        new DataPoint(xValue++, Integer.parseInt(ecgValue)),
+                        new DataPoint(xValue++, Integer.parseInt(ecgValueString)),
                         true,
                         50000
                 );
-                Log.d(TAG, "X: "+ xValue);
-
-                for(i=0;i<=100;i++)
-                {
-                    epochSum = epochSum + Integer.parseInt(ecgValue);
-
+                Log.d(TAG, "X: " + xValue);
+                Log.d(TAG, "EpochCounter: " + epochCounter);
+                Log.d(TAG, "Epoch Value: " + epochSum);
+                if (epochCounter < 20) {
+                    epochSum = epochSum + Integer.parseInt(ecgValueString);
+                    epochCounter++;
+                } else {
+                    checkAbnormality(epochSum);
+                    epochCounter = 0;
+                    epochSum = 0;
                 }
-                //checkAbnormality(epochSum);
+                displayString.append("\nEPOCH SUM: " + epochSum);
+                displayString.append("\nEPOCH COUNTER: " + epochCounter);
+                ecgValue.setText(displayString.toString());
+                displayString.replace(0, displayString.toString().length(), "");
             }
 
             @Override
@@ -131,51 +149,78 @@ public class ECGActivity extends AppCompatActivity {
 
     }
 
-    /*private void checkAbnormality(int epochSum ) {
+    private void checkAbnormality(int epochSum) {
 
         //int noOfAbn = Integer.parseInt(Common.currentUser.getNoOfAbn());
 
-       // Log.w("Checking abnormality","Yes checking it" + noOfAbn);
+        // Log.w("Checking abnormality","Yes checking it" + noOfAbn);
 
-        if (epochSum > upperBound && preEpoch == 1 ){
+        if (epochSum > upperBound && preEpoch == 1) {
             tempItern--;
             preEpoch = 1;
-        }else if(epochSum > upperBound && preEpoch != 1){
-            tempItern = noItrn-1;
+        } else if (epochSum > upperBound && preEpoch != 1) {
+            tempItern = noItrn - 1;
             preEpoch = 1;
-        }else if (epochSum < lowerBound && preEpoch == -1){
+        } else if (epochSum < lowerBound && preEpoch == -1) {
             tempItern--;
             preEpoch = -1;
-        }else if(epochSum < lowerBound && preEpoch != -1){
-            tempItern = noItrn-1;
+        } else if (epochSum < lowerBound && preEpoch != -1) {
+            tempItern = noItrn - 1;
             preEpoch = -1;
-        }else{
+        } else {
             tempItern = noItrn;
             preEpoch = 0;
         }
 
-        Log.w("Abnormality test", preEpoch+"-------"+tempItern+"----");
-
-        if (preEpoch == -1 && tempItern<= 1){
+        Log.w("Abnormality test", preEpoch + "-------" + tempItern + "----");
+        Log.d(TAG, "Abnormality Test : \nPreEpoch" + preEpoch + " TempItern: " + tempItern);
+        Toast.makeText(getApplicationContext(), "Abnormality Test : \n PreEpoch" + preEpoch + "\n TempItern: " + tempItern, Toast.LENGTH_SHORT).show();
+        if (preEpoch == -1 && tempItern <= 1) {
             Toast.makeText(this, "Abnormal Low Condition Detected!!!( Low )", Toast.LENGTH_SHORT).show();
-           // noOfAbn++;
-           // Common.currentUser.setNoOfAbn(noOfAbn+"");
-            Abnormality abnormality = new Abnormality(firebaseUser,"Low Heart Rate", "Heart rate decreased to lowest level", "false", noOfAbn+"");
-            abnormalityReference.child((noOfAbn)+"").setValue(abnormality);
-            userReference.child(Common.currentUser.getUserName()).setValue(Common.currentUser);
+            generateNotificaiton("Abnormal Low Condition Detected!!!( Low )");
+//            noOfAbn++;
 
-        }else if(preEpoch == 1 && tempItern <= 1){
+        } else if (preEpoch == 1 && tempItern <= 1) {
             Toast.makeText(this, "Abnormal Hart Condition Detected!!!( Heigh )", Toast.LENGTH_SHORT).show();
-            noOfAbn++;
-            Common.currentUser.setNoOfAbn(noOfAbn+"");
-            Abnormality abnormality = new Abnormality(Common.currentUser.getUserName(),"High Heart Rate", "Heart rate increased to highest level", "false", noOfAbn+"");
-            abnormalityReference.child((noOfAbn)+"").setValue(abnormality);
-            userReference.child(Common.currentUser.getUserName()).setValue(Common.currentUser);
+            generateNotificaiton("Abnormal Hart Condition Detected!!!( Heigh )");
+//            noOfAbn++;
         }
+        Toast.makeText(getApplicationContext(), "No Abnormalities", Toast.LENGTH_LONG).show();
+        generateNotificaiton("No Abnormalities");
+
         preEpoch = 0;
         tempItern = noItrn;
 
-    }*/
+    }
+
+    public void generateNotificaiton(String notificationText) {
+        NotificationManager notificationManager;
+        notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+
+        String channelId = "default_channel_id";
+        String channelDescription = "Default Channel";
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = notificationManager.getNotificationChannel(channelId);
+            if (notificationChannel == null) {
+                int importance = NotificationManager.IMPORTANCE_HIGH; //Set the importance level
+                notificationChannel = new NotificationChannel(channelId, channelDescription, importance);
+                notificationChannel.setLightColor(Color.GREEN); //Set if it is necesssary
+                notificationChannel.enableVibration(true); //Set if it is necesssary
+                notificationManager.createNotificationChannel(notificationChannel);
+            }
+        }
+
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(ECGActivity.this)
+                .setSmallIcon(R.drawable.notification_icon)
+                .setContentTitle("Cardiac Consult")
+                .setContentText(notificationText)
+                .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400})
+                .setChannelId(channelId)
+                .setAutoCancel(true);
+
+        notificationManager.notify(0, notificationBuilder.build());
+
+    }
 
     @Override
     public void onBackPressed() {
