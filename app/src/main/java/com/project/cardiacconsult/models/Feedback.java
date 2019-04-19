@@ -1,48 +1,32 @@
 package com.project.cardiacconsult.models;
 
-public class Feedback
-{
 
-    private float overallrating;
+public class Feedback {
+
+
+    private float Overallrating;
 
     private float accuracy;
 
-    private float Diagnosis;
+    private float diagnosis;
 
-    private float Phyrating;
+    private float phyrating;
 
+    public Feedback(){
 
-     public  Feedback(){}
+    }
 
-     public Feedback(float overallrating, float accuracy, float Diagnosis, float Phyrating)
-     {
-
-        this.overallrating=overallrating;
+    public Feedback(float overallrating, float accuracy, float diagnosis, float phyrating)
+    {
+        Overallrating=overallrating;
         this.accuracy=accuracy;
-        this.Diagnosis=Diagnosis;
-        this.Phyrating=Phyrating;
+        this.diagnosis=diagnosis;
+        this.phyrating=phyrating;
 
-     }
-
-
-    public float getAccuracy() {
-        return accuracy;
-    }
-
-    public float getOverallrating() {
-        return overallrating;
-    }
-
-    public float getDiagnosis() {
-        return Diagnosis;
-    }
-
-    public float getPhyrating() {
-        return Phyrating;
     }
 
     public void setOverallrating(float overallrating) {
-        this.overallrating = overallrating;
+        Overallrating = overallrating;
     }
 
     public void setAccuracy(float accuracy) {
@@ -50,21 +34,27 @@ public class Feedback
     }
 
     public void setDiagnosis(float diagnosis) {
-        Diagnosis = diagnosis;
+
+        this.diagnosis = diagnosis;
     }
 
     public void setPhyrating(float phyrating) {
-        Phyrating = phyrating;
+        this.phyrating = phyrating;
     }
 
+    public float getOverallrating() {
+        return Overallrating;
+    }
 
-   /* @Override
-    public String toString() {
-        return "Feedback{" +
-                "Overallrating='" + overallrating + '\'' +
-                ", Accuracy='" + accuracy + '\'' +
-                ", Diagnosis='" + Diagnosis + '\'' +
-                ", Phyrating='" + Phyrating + '\'' +
-                '}';
-    }*/
+    public float getAccuracy() {
+        return accuracy;
+    }
+
+    public float getDiagnosis() {
+        return diagnosis;
+    }
+
+    public float getPhyrating() {
+        return phyrating;
+    }
 }
