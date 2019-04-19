@@ -1,5 +1,6 @@
 package com.project.cardiacconsult.models;
 
+
 public class Feedback {
 
 
@@ -33,6 +34,7 @@ public class Feedback {
     }
 
     public void setDiagnosis(float diagnosis) {
+
         this.diagnosis = diagnosis;
     }
 

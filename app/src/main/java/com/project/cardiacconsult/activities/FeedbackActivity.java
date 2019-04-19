@@ -18,10 +18,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.project.cardiacconsult.R;
 import com.project.cardiacconsult.models.Feedback;
 
+
 public class FeedbackActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = FeedbackActivity.class.getName();
-    Toolbar toolbar;
+    android.support.v7.widget.Toolbar toolbar;
     Feedback feedback;
     RatingBar ratingBar1, ratingBar2, ratingBar3, ratingBar4;
     Button btfeedback;
@@ -34,6 +35,7 @@ public class FeedbackActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.app_bar_activity_feedback);
 
         toolbar = findViewById(R.id.toolbar);
@@ -60,6 +62,7 @@ public class FeedbackActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+
 
         float overallrating=ratingBar1.getRating();
         float accuracy=ratingBar2.getRating();
